@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "Daily Security News Digest",
+    "goal": "Automatically aggregate and email security news every morning",
+    "inputs": "RSS feeds (Bleeping Computer, Dark Reading, etc.)",
+    "steps": "1. Trigger: Schedule daily at 7 AM\n2. Fetch RSS feeds\n3. Filter for keywords (breach, vulnerability, ransomware)\n4. Format as HTML email\n5. Send via Gmail/Outlook",
+    "platform": "Make.com",
+    "difficulty": "Beginner",
+    "time_to_setup": "15 minutes",
+    "tags": ["automation", "security", "email"]
+  },
+  {
+    "id": 2,
+    "title": "Automated Vulnerability Report",
+    "goal": "Scan your network weekly and send summary report",
+    "inputs": "Nmap, vulnerability scanner output",
+    "steps": "1. Run Nmap scan on schedule\n2. Parse XML output with Python\n3. Identify open ports and services\n4. Generate PDF report\n5. Email to security team",
+    "platform": "Python",
+    "difficulty": "Intermediate",
+    "time_to_setup": "45 minutes",
+    "tags": ["security", "scanning", "reporting"]
+  },
+  {
+    "id": 3,
+    "title": "Phishing Email Detector",
+    "goal": "Flag suspicious emails in your inbox automatically",
+    "inputs": "Email inbox (Gmail, Outlook)",
+    "steps": "1. Monitor incoming emails\n2. Check sender reputation\n3. Analyze links and attachments\n4. Flag or move suspicious emails\n5. Log incidents to spreadsheet",
+    "platform": "Make.com",
+    "difficulty": "Intermediate",
+    "time_to_setup": "30 minutes",
+    "tags": ["security", "email", "phishing"]
+  },
+  {
+    "id": 4,
+    "title": "Automated Security Patch Checker",
+    "goal": "Check for updates and patch systems automatically",
+    "inputs": "Server list, package managers (apt, yum)",
+    "steps": "1. Connect to servers via SSH\n2. Check for available updates\n3. Test updates in staging\n4. Apply patches during maintenance window\n5. Verify and report status",
+    "platform": "Ansible",
+    "difficulty": "Advanced",
+    "time_to_setup": "2 hours",
+    "tags": ["devops", "security", "automation"]
+  },
+  {
+    "id": 5,
+    "title": "WordPress Security Monitor",
+    "goal": "Monitor WordPress sites for security issues",
+    "inputs": "WordPress REST API, plugin list",
+    "steps": "1. Fetch installed plugins via API\n2. Check against vulnerability database\n3. Scan for outdated versions\n4. Alert if issues found\n5. Generate remediation recommendations",
+    "platform": "Python",
+    "difficulty": "Intermediate",
+    "time_to_setup": "1 hour",
+    "tags": ["wordpress", "security", "monitoring"]
+  },
+  {
+    "id": 6,
+    "title": "Social Media Security Alerts",
+    "goal": "Track security discussions on Twitter/Reddit",
+    "inputs": "Twitter API, Reddit API",
+    "steps": "1. Monitor hashtags (#infosec, #cybersecurity)\n2. Filter by engagement metrics\n3. Extract links and summaries\n4. Store in database\n5. Daily digest email",
+    "platform": "Make.com + Python",
+    "difficulty": "Intermediate",
+    "time_to_setup": "45 minutes",
+    "tags": ["osint", "security", "social-media"]
+  },
+  {
+    "id": 7,
+    "title": "Incident Response Ticketing",
+    "goal": "Auto-create tickets from security alerts",
+    "inputs": "SIEM alerts, log entries",
+    "steps": "1. Receive alert webhook\n2. Parse alert data\n3. Classify severity\n4. Create Jira/ServiceNow ticket\n5. Assign to on-call team",
+    "platform": "Make.com",
+    "difficulty": "Intermediate",
+    "time_to_setup": "30 minutes",
+    "tags": ["incident-response", "automation", "ticketing"]
+  },
+  {
+    "id": 8,
+    "title": "Password Breach Checker",
+    "goal": "Check if company emails appear in breaches",
+    "inputs": "HaveIBeenPwned API, employee email list",
+    "steps": "1. Load employee emails from CSV\n2. Query HaveIBeenPwned API\n3. Identify compromised accounts\n4. Force password reset via AD\n5. Email affected users",
+    "platform": "Python",
+    "difficulty": "Advanced",
+    "time_to_setup": "1.5 hours",
+    "tags": ["security", "passwords", "breach-detection"]
+  },
+  {
+    "id": 9,
+    "title": "Cloud Cost Security Audit",
+    "goal": "Identify overprivileged resources costing money",
+    "inputs": "AWS/Azure/GCP billing API",
+    "steps": "1. Fetch IAM permissions\n2. Analyze resource usage\n3. Identify unused/overprivileged resources\n4. Calculate cost savings\n5. Generate recommendations report",
+    "platform": "Terraform + Python",
+    "difficulty": "Advanced",
+    "time_to_setup": "2 hours",
+    "tags": ["cloud", "security", "cost-optimization"]
+  },
+  {
+    "id": 10,
+    "title": "Automated SSL Certificate Renewal",
+    "goal": "Monitor and renew SSL certificates before expiry",
+    "inputs": "Domain list, Let's Encrypt API",
+    "steps": "1. Check certificate expiry dates\n2. Alert 30 days before expiration\n3. Auto-renew via Let's Encrypt\n4. Deploy new certificate\n5. Verify installation",
+    "platform": "Certbot + Cron",
+    "difficulty": "Intermediate",
+    "time_to_setup": "45 minutes",
+    "tags": ["security", "ssl", "automation"]
+  }
+]

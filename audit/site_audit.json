@@ -1,0 +1,437 @@
+{
+  "audit_date": "2025-11-10T18:33:14.670488",
+  "site_url": "https://roblotech.com",
+  "total_pages_analyzed": 13,
+  "content_map": [
+    {
+      "url": "https://roblotech.com/blog",
+      "title": "Blog - RobLoTech",
+      "meta_description": "",
+      "h1_tags": [],
+      "h2_tags": [
+        "Why I Still Use Malwarebytes in 2025 (Product Review)",
+        "Social Engineering: Understanding Modern Threats and Prevention Strategies",
+        "Strong Password Tips: Best Practices for Account Security",
+        "What is Malware? Simple Steps to Keep Your Devices Safe",
+        "How to Spot Phishing Emails: 10 Warning Signs to Keep You Safe in 2025",
+        "MFA Explained: How Multi-Factor Authentication Helps Keep Your Data Safe",
+        "Career Change to Cybersecurity: Lessons, Growth, and Grit",
+        "Public Wi-Fi Security: Essential Tips to Stay Safe Online in 2025",
+        "VPN Explained: How It Protects Your Online Privacy in 2025",
+        "Information Security 101: Simple Steps to Strengthen Your Security"
+      ],
+      "word_count": 45,
+      "internal_links": 72,
+      "target_keywords": [
+        "security",
+        "safe",
+        "keep",
+        "tips",
+        "simple"
+      ],
+      "lastmod": null
+    },
+    {
+      "url": "https://roblotech.com/why-i-use-malwarebytes-in-2025",
+      "title": "Why I Still Use Malwarebytes in 2025 (Product Review) - RobLoTech",
+      "meta_description": "Is Malwarebytes still worth it in 2025? As a cybersecurity professional, here’s why I continue to use and recommend it—plus a breakdown of plans, pricing, and protection.",
+      "h1_tags": [],
+      "h2_tags": [
+        "Why I Still Use Malwarebytes in 2025 (Product Review)"
+      ],
+      "word_count": 958,
+      "internal_links": 36,
+      "target_keywords": [
+        "still",
+        "use",
+        "malwarebytes",
+        "product",
+        "review"
+      ],
+      "lastmod": "2025-06-24T05:53:47+00:00"
+    },
+    {
+      "url": "https://roblotech.com/social-engineering",
+      "title": "Social Engineering: Understanding Modern Threats and Prevention Strategies - RobLoTech",
+      "meta_description": "Ever clicked a link in an email because it “looked official” or got a weird phone call suggesting benefits from one of your traveler programs out of the blue?",
+      "h1_tags": [],
+      "h2_tags": [
+        "Social Engineering: Understanding Modern Threats and Prevention Strategies",
+        "Table of Contents",
+        "Key Takeaways",
+        "Understanding Social Engineering",
+        "Major Types of Social Engineering Attacks",
+        "Prevention, Detection, and Mitigation",
+        "Conclusion"
+      ],
+      "word_count": 2726,
+      "internal_links": 41,
+      "target_keywords": [
+        "social",
+        "engineering",
+        "understanding",
+        "prevention",
+        "modern"
+      ],
+      "lastmod": "2025-05-28T04:54:42+00:00"
+    },
+    {
+      "url": "https://roblotech.com/what-is-malware",
+      "title": "What is Malware? Simple Steps to Keep Your Devices Safe - RobLoTech",
+      "meta_description": "Let’s be real: most of us don’t think about malware until it’s too late — like when our laptop starts acting possessed, our files disappear, or our bank",
+      "h1_tags": [],
+      "h2_tags": [
+        "What is Malware? Simple Steps to Keep Your Devices Safe",
+        "Table of Contents",
+        "So, What Is Malware?",
+        "Types of Malware",
+        "How Malware Actually Gets In",
+        "Signs You’ve Got a Malware Problem",
+        "Best Practices for Prevention",
+        "Steps When Responding to an Infection",
+        "Final Thoughts"
+      ],
+      "word_count": 1847,
+      "internal_links": 43,
+      "target_keywords": [
+        "malware",
+        "steps",
+        "simple",
+        "keep",
+        "devices"
+      ],
+      "lastmod": "2025-05-24T06:09:48+00:00"
+    },
+    {
+      "url": "https://roblotech.com/strong-password-tips",
+      "title": "Strong Password Tips: Best Practices for Account Security - RobLoTech",
+      "meta_description": "Have you ever tried remembering every single password you’ve set?  Might just be me (lol).  But just in case it's not, then you’re definitely not alone.  The",
+      "h1_tags": [],
+      "h2_tags": [
+        "Strong Password Tips: Best Practices for Account Security",
+        "Table of Contents",
+        "Core Principles for Creating Strong Passwords",
+        "Effective Management of Passwords",
+        "Enhancing Password Security",
+        "Final Thoughts"
+      ],
+      "word_count": 1848,
+      "internal_links": 44,
+      "target_keywords": [
+        "strong",
+        "password",
+        "security",
+        "tips",
+        "best"
+      ],
+      "lastmod": "2025-05-16T05:35:58+00:00"
+    },
+    {
+      "url": "https://roblotech.com/how-to-spot-phishing-emails",
+      "title": "How to Spot Phishing Emails: 10 Warning Signs to Keep You Safe in 2025 - RobLoTech",
+      "meta_description": "Learn how to identify phishing emails in 2025 with this beginner-friendly guide. Discover 10 warning signs, real-world examples, and practical tips to protect your accounts from scams and cyber threats.",
+      "h1_tags": [],
+      "h2_tags": [
+        "How to Spot Phishing Emails: 10 Warning Signs to Keep You Safe in 2025",
+        "Understanding Phishing (What It Is and Why It Works)",
+        "How to Spot a Phishing Email Like a Pro",
+        "Best Practices to Stay Safe from Phishing",
+        "Final Thoughts: Stay Calm, Stay Curious, Stay Secure"
+      ],
+      "word_count": 1795,
+      "internal_links": 43,
+      "target_keywords": [
+        "phishing",
+        "stay",
+        "spot",
+        "safe",
+        "emails"
+      ],
+      "lastmod": "2025-04-30T05:33:35+00:00"
+    },
+    {
+      "url": "https://roblotech.com/mfa-explained",
+      "title": "MFA Explained: How Multi-Factor Authentication Helps Keep Your Data Safe - RobLoTech",
+      "meta_description": "Have you ever been locked out of your account when logging in from a new device? That’s probably because of multi-factor authentication (MFA) doing its job —",
+      "h1_tags": [],
+      "h2_tags": [
+        "MFA Explained: How Multi-Factor Authentication Helps Keep Your Data Safe",
+        "Table of Contents",
+        "Understanding MFA",
+        "Implementing MFA",
+        "Final Thoughts: Take Control of Your Online Security"
+      ],
+      "word_count": 1132,
+      "internal_links": 42,
+      "target_keywords": [
+        "mfa",
+        "explained",
+        "multi",
+        "factor",
+        "authentication"
+      ],
+      "lastmod": "2025-04-29T21:37:55+00:00"
+    },
+    {
+      "url": "https://roblotech.com/career-change-to-cybersecurity",
+      "title": "Career Change to Cybersecurity: Lessons, Growth, and Grit - RobLoTech",
+      "meta_description": "Thinking of a career change to cybersecurity? Here's how I pivoted from pro baseball to tech, built a new IT career from scratch, and found my passion in cybersecurity — plus tips to help you do the same.",
+      "h1_tags": [],
+      "h2_tags": [
+        "Career Change to Cybersecurity: Lessons, Growth, and Grit",
+        "Key Takeaways",
+        "Table of Contents",
+        "Life on the Field: Lessons from 13 Years in Pro Baseball",
+        "The Turning Point: Finding Passion in Tech",
+        "Starting From Scratch (Again): What It’s Like to Begin a New Career",
+        "Landing That First Role: Why Cybersecurity Was the Right Fit",
+        "Advice to Career Changers: How to Successfully Make the Leap"
+      ],
+      "word_count": 2437,
+      "internal_links": 37,
+      "target_keywords": [
+        "career",
+        "cybersecurity",
+        "lessons",
+        "change",
+        "growth"
+      ],
+      "lastmod": "2025-04-24T05:47:04+00:00"
+    },
+    {
+      "url": "https://roblotech.com/vpn-explained",
+      "title": "VPN Explained: How It Protects Your Online Privacy in 2025 - RobLoTech",
+      "meta_description": "That's where a VPN comes in. This solution might sound like something only tech savvy people use, but it's actually one of the simples (and smartest) tools",
+      "h1_tags": [],
+      "h2_tags": [
+        "VPN Explained: How It Protects Your Online Privacy in 2025",
+        "Table of Contents",
+        "What Is a VPN?",
+        "The Basics of Virtual Private Networks",
+        "How VPNs Protect Your Internet Privacy",
+        "Setting Up and Using a VPN",
+        "Final Thoughts: Stay Safe, Stay Private"
+      ],
+      "word_count": 1435,
+      "internal_links": 40,
+      "target_keywords": [
+        "vpn",
+        "privacy",
+        "explained",
+        "protects",
+        "online"
+      ],
+      "lastmod": "2025-04-16T05:06:49+00:00"
+    },
+    {
+      "url": "https://roblotech.com/what-is-cybersecurity-2025-guide",
+      "title": "What is Cybersecurity? 2025 Guide to Staying Safe Online - RobLoTech",
+      "meta_description": "In today's rapidly evolving digital landscape, cyber threats are becoming more prevalent and harmful. Protecting yourself and your information from these",
+      "h1_tags": [
+        "What is Cybersecurity?"
+      ],
+      "h2_tags": [
+        "What is Cybersecurity? 2025 Guide to Staying Safe Online",
+        "Table of Contents",
+        "Why Cybersecurity Matters",
+        "Cybersecurity Pillars: People, Processes, and Technology",
+        "1. People",
+        "2. Processes",
+        "3. Technology",
+        "Common Cybersecurity Threats",
+        "Cybersecurity Best Practices: Essential Steps to Stay Safe",
+        "Why Cybersecurity Matters More Than Ever",
+        "Getting Started in Cybersecurity"
+      ],
+      "word_count": 2008,
+      "internal_links": 41,
+      "target_keywords": [
+        "cybersecurity",
+        "safe",
+        "guide",
+        "staying",
+        "online"
+      ],
+      "lastmod": "2025-04-16T04:33:00+00:00"
+    },
+    {
+      "url": "https://roblotech.com/public-wi-fi-security",
+      "title": "Public Wi-Fi Security: Essential Tips to Stay Safe Online in 2025 - RobLoTech",
+      "meta_description": "Public Wi-Fi can be both a lifesaver and a potential risk for anyone who uses it.  Whether you're working from a coffee shop, killing time at the",
+      "h1_tags": [],
+      "h2_tags": [
+        "Public Wi-Fi Security: Essential Tips to Stay Safe Online in 2025",
+        "Table of Contents",
+        "Understanding Public Wi-Fi",
+        "Risks of Using Public Wi-Fi",
+        "Best Practices for Public Wi-Fi Security",
+        "Stay Smart, Stay Secure"
+      ],
+      "word_count": 1876,
+      "internal_links": 42,
+      "target_keywords": [
+        "public",
+        "stay",
+        "security",
+        "essential",
+        "tips"
+      ],
+      "lastmod": "2025-04-15T13:23:15+00:00"
+    },
+    {
+      "url": "https://roblotech.com/best-cybersecurity-certifications-for-beginners-in-2025",
+      "title": "Best Cybersecurity Certifications for Beginners in 2025 - RobLoTech",
+      "meta_description": "Cybersecurity certifications are one of the best ways to gain credibility, prove your skills, and break into the cybersecurity field—even if you have no prior",
+      "h1_tags": [
+        "What Makes a Certification Valuable for Beginners?"
+      ],
+      "h2_tags": [
+        "Best Cybersecurity Certifications for Beginners in 2025",
+        "Table of Contents",
+        "Best Cybersecurity Certifications for Beginners",
+        "How to Prepare for Your First Cybersecurity Certification",
+        "Final Thoughts"
+      ],
+      "word_count": 1938,
+      "internal_links": 36,
+      "target_keywords": [
+        "cybersecurity",
+        "beginners",
+        "best",
+        "certifications",
+        "certification"
+      ],
+      "lastmod": "2025-04-10T05:47:55+00:00"
+    },
+    {
+      "url": "https://roblotech.com/information-security-101-guide",
+      "title": "Information Security 101: Simple Steps to Strengthen Your Security - RobLoTech",
+      "meta_description": "Information Security (InfoSec) is the backbone of protecting sensitive data.  Whether it’s personal records, business documents, or financial details,",
+      "h1_tags": [],
+      "h2_tags": [
+        "Information Security 101: Simple Steps to Strengthen Your Security",
+        "Fundamentals of Information Security: The CIA Triad",
+        "Risk Assessment and Management",
+        "Security Policies and Frameworks",
+        "Defensive Security Measures",
+        "Final Thoughts"
+      ],
+      "word_count": 1466,
+      "internal_links": 43,
+      "target_keywords": [
+        "security",
+        "information",
+        "simple",
+        "steps",
+        "strengthen"
+      ],
+      "lastmod": "2025-04-10T05:43:40+00:00"
+    }
+  ],
+  "seo_gaps": {
+    "missing_meta_descriptions": [
+      "https://roblotech.com/blog"
+    ],
+    "thin_content": [
+      {
+        "url": "https://roblotech.com/blog",
+        "word_count": 45
+      }
+    ],
+    "low_internal_linking": [],
+    "topic_opportunities": [
+      "chatgpt automation",
+      "make.com tutorials",
+      "zapier workflows",
+      "ai content creation",
+      "api automation",
+      "ai threat detection",
+      "automated vulnerability scanning",
+      "ai-powered siem",
+      "automated incident response"
+    ],
+    "keyword_suggestions": [
+      {
+        "keyword": "cybersecurity automation tools",
+        "difficulty": "medium",
+        "intent": "commercial"
+      },
+      {
+        "keyword": "ai security monitoring",
+        "difficulty": "medium",
+        "intent": "informational"
+      },
+      {
+        "keyword": "automated threat response",
+        "difficulty": "high",
+        "intent": "commercial"
+      },
+      {
+        "keyword": "python security automation scripts",
+        "difficulty": "low",
+        "intent": "informational"
+      },
+      {
+        "keyword": "no-code cybersecurity workflows",
+        "difficulty": "low",
+        "intent": "informational"
+      }
+    ]
+  },
+  "monetization_gaps": {
+    "affiliate_opportunities": [
+      {
+        "topic": "VPN reviews and comparisons",
+        "partners": [
+          "CyberGhost",
+          "NordVPN",
+          "Surfshark"
+        ],
+        "placement": "Product comparison table with affiliate links"
+      },
+      {
+        "topic": "Security tools directory",
+        "partners": [
+          "Amazon Associates",
+          "StackSocial"
+        ],
+        "placement": "Interactive widget with affiliate links"
+      },
+      {
+        "topic": "AI writing tools for security documentation",
+        "partners": [
+          "Grammarly",
+          "Jasper"
+        ],
+        "placement": "Tool recommendations in how-to guides"
+      },
+      {
+        "topic": "Hosting and domain security",
+        "partners": [
+          "Namecheap",
+          "Hostinger",
+          "Cloudways"
+        ],
+        "placement": "Hosting guides with affiliate comparison"
+      }
+    ],
+    "lead_magnets": [
+      "Cybersecurity Career Roadmap PDF",
+      "Top 50 Security Tools Checklist",
+      "Python Security Scripts Bundle",
+      "Make.com Security Automation Templates",
+      "Email Security Audit Worksheet"
+    ],
+    "list_building": [
+      "Weekly security news digest subscription",
+      "Monthly automation playbook updates",
+      "Exclusive tool deals and discounts",
+      "Free mini-course on security fundamentals"
+    ]
+  },
+  "summary_stats": {
+    "avg_word_count": 1654.6923076923076,
+    "pages_with_meta_desc": 12,
+    "avg_internal_links": 43.07692307692308
+  }
+}

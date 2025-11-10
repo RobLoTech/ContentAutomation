@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RobLoTech Content Metrics Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+        <h1 class="text-4xl font-bold text-gray-900 mb-2">Content Performance Dashboard</h1>
+        <p class="text-gray-600 mb-8">Track your content automation success metrics</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-sm text-gray-600 mb-1">Posts This Week</p>
+                <p class="text-3xl font-bold text-blue-600" id="postsWeek">3</p>
+                <p class="text-xs text-gray-500 mt-2">Target: 3/week</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-sm text-gray-600 mb-1">Average CTR</p>
+                <p class="text-3xl font-bold text-green-600" id="avgCTR">3.2%</p>
+                <p class="text-xs text-gray-500 mt-2">Target: ≥3.0%</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-sm text-gray-600 mb-1">Newsletter Subs</p>
+                <p class="text-3xl font-bold text-purple-600" id="newsletterSubs">25</p>
+                <p class="text-xs text-gray-500 mt-2">Target: 20/week</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-sm text-gray-600 mb-1">Est. Revenue</p>
+                <p class="text-3xl font-bold text-yellow-600" id="revenue">$125</p>
+                <p class="text-xs text-gray-500 mt-2">This month</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold mb-4">Weekly Posts Published</h2>
+                <canvas id="postsChart"></canvas>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-bold mb-4">CTR Trend (4 Weeks)</h2>
+                <canvas id="ctrChart"></canvas>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-xl font-bold mb-4">Top Performing Posts (Last 7 Days)</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="border-b">
+                        <tr>
+                            <th class="pb-3 text-gray-700">Post Title</th>
+                            <th class="pb-3 text-gray-700">Views</th>
+                            <th class="pb-3 text-gray-700">CTR</th>
+                            <th class="pb-3 text-gray-700">Conversions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="topPosts">
+                        <tr class="border-b">
+                            <td class="py-3">ChatGPT for Cybersecurity: 10 Practical Use Cases</td>
+                            <td class="py-3">1,250</td>
+                            <td class="py-3 text-green-600">4.2%</td>
+                            <td class="py-3">12</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3">Make.com Security Automation Tutorial</td>
+                            <td class="py-3">980</td>
+                            <td class="py-3 text-green-600">3.8%</td>
+                            <td class="py-3">9</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3">Password Manager Comparison 2025</td>
+                            <td class="py-3">750</td>
+                            <td class="py-3 text-yellow-600">2.9%</td>
+                            <td class="py-3">5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h3 class="text-lg font-bold text-blue-900 mb-2">✅ Goals Status</h3>
+            <ul class="space-y-2 text-blue-800">
+                <li>✓ Publishing 3+ quality posts per week</li>
+                <li>✓ CTR averaging above 3% on affiliate blocks</li>
+                <li>✓ Newsletter growing by 20+ subscribers weekly</li>
+                <li>⏳ Traffic increasing 10% month-over-month (in progress)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const postsCtx = document.getElementById('postsChart').getContext('2d');
+        new Chart(postsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Posts Published',
+                    data: [2, 3, 3, 3],
+                    backgroundColor: 'rgba(59, 130, 246, 0.5)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { y: { beginAtZero: true, max: 5 } }
+            }
+        });
+
+        const ctrCtx = document.getElementById('ctrChart').getContext('2d');
+        new Chart(ctrCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'CTR %',
+                    data: [2.8, 3.1, 3.2, 3.2],
+                    borderColor: 'rgba(34, 197, 94, 1)',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { y: { beginAtZero: true, max: 5 } }
+            }
+        });
+    </script>
+</body>
+</html>

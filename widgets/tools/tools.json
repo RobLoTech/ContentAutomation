@@ -1,0 +1,302 @@
+[
+  {
+    "name": "ChatGPT",
+    "category": "AI Writing",
+    "best_for": "Content creation, code generation, research assistance",
+    "pricing": "Free / $20/month Pro",
+    "affiliate_slug": "openai",
+    "pros": "Versatile, large knowledge base, code generation",
+    "cons": "Can hallucinate facts, limited to training data cutoff",
+    "tags": ["ai", "writing", "automation"]
+  },
+  {
+    "name": "Grammarly",
+    "category": "AI Writing",
+    "best_for": "Grammar checking, writing improvement",
+    "pricing": "Free / $12/month Premium",
+    "affiliate_slug": "grammarly",
+    "pros": "Real-time corrections, style suggestions, plagiarism detection",
+    "cons": "Can be overly prescriptive, privacy concerns",
+    "tags": ["writing", "productivity"]
+  },
+  {
+    "name": "Make.com",
+    "category": "Automation",
+    "best_for": "No-code workflow automation, API integrations",
+    "pricing": "Free / $9/month Core",
+    "affiliate_slug": "make",
+    "pros": "Visual automation builder, 1000+ integrations, affordable",
+    "cons": "Learning curve for complex workflows",
+    "tags": ["automation", "no-code", "integration"]
+  },
+  {
+    "name": "Zapier",
+    "category": "Automation",
+    "best_for": "Simple automation workflows, enterprise integrations",
+    "pricing": "$19.99/month Starter",
+    "affiliate_slug": "zapier",
+    "pros": "Easiest to use, massive app ecosystem, reliable",
+    "cons": "Expensive for high-volume usage",
+    "tags": ["automation", "no-code"]
+  },
+  {
+    "name": "CyberGhost VPN",
+    "category": "Security",
+    "best_for": "Privacy protection, secure browsing",
+    "pricing": "$2.19/month (2-year plan)",
+    "affiliate_slug": "cyberghost",
+    "pros": "No-logs policy, fast speeds, easy to use",
+    "cons": "Based in Romania (14 Eyes jurisdiction)",
+    "tags": ["vpn", "security", "privacy"]
+  },
+  {
+    "name": "1Password",
+    "category": "Security",
+    "best_for": "Password management, team collaboration",
+    "pricing": "$2.99/month Individual",
+    "affiliate_slug": "1password",
+    "pros": "Strong security, travel mode, watchtower alerts",
+    "cons": "No free plan, slightly more expensive",
+    "tags": ["security", "password", "encryption"]
+  },
+  {
+    "name": "Malwarebytes",
+    "category": "Security",
+    "best_for": "Malware removal, real-time protection",
+    "pricing": "$44.99/year",
+    "affiliate_slug": "malwarebytes",
+    "pros": "Excellent malware detection, lightweight, fast scans",
+    "cons": "Limited firewall features",
+    "tags": ["security", "antivirus", "malware"]
+  },
+  {
+    "name": "NordVPN",
+    "category": "Security",
+    "best_for": "Fast VPN, streaming, large server network",
+    "pricing": "$3.39/month (2-year plan)",
+    "affiliate_slug": "nordvpn",
+    "pros": "Fast speeds, threat protection, meshnet feature",
+    "cons": "More expensive than competitors",
+    "tags": ["vpn", "security", "streaming"]
+  },
+  {
+    "name": "Notion",
+    "category": "Productivity",
+    "best_for": "Note-taking, project management, wikis",
+    "pricing": "Free / $8/month Plus",
+    "affiliate_slug": "notion",
+    "pros": "Highly customizable, databases, collaboration",
+    "cons": "Steep learning curve, can be slow with large datasets",
+    "tags": ["productivity", "notes", "collaboration"]
+  },
+  {
+    "name": "Obsidian",
+    "category": "Productivity",
+    "best_for": "Local-first knowledge management, markdown notes",
+    "pricing": "Free / $50/year Sync",
+    "affiliate_slug": "obsidian",
+    "pros": "Offline-first, highly extensible, owns your data",
+    "cons": "Sync costs extra, mobile app limited",
+    "tags": ["productivity", "notes", "markdown"]
+  },
+  {
+    "name": "Airtable",
+    "category": "Database",
+    "best_for": "Flexible databases, project tracking",
+    "pricing": "Free / $20/month Team",
+    "affiliate_slug": "airtable",
+    "pros": "Combines spreadsheet and database, automations, views",
+    "cons": "Expensive for teams, formula complexity",
+    "tags": ["database", "productivity", "no-code"]
+  },
+  {
+    "name": "Cloudflare",
+    "category": "Security",
+    "best_for": "DDoS protection, CDN, DNS",
+    "pricing": "Free / $20/month Pro",
+    "affiliate_slug": "cloudflare",
+    "pros": "Free tier is generous, fast CDN, WAF protection",
+    "cons": "Complex dashboard, enterprise features locked",
+    "tags": ["security", "cdn", "dns"]
+  },
+  {
+    "name": "GitHub Copilot",
+    "category": "AI Development",
+    "best_for": "Code completion, AI pair programming",
+    "pricing": "$10/month Individual",
+    "affiliate_slug": "github",
+    "pros": "Context-aware suggestions, multi-language support",
+    "cons": "Licensing concerns, can suggest vulnerable code",
+    "tags": ["ai", "coding", "development"]
+  },
+  {
+    "name": "Snyk",
+    "category": "Security",
+    "best_for": "Vulnerability scanning, dependency monitoring",
+    "pricing": "Free / $52/month Team",
+    "affiliate_slug": "snyk",
+    "pros": "Continuous monitoring, fix PRs, integrates with CI/CD",
+    "cons": "Can be noisy with false positives",
+    "tags": ["security", "devops", "scanning"]
+  },
+  {
+    "name": "Splunk",
+    "category": "Security",
+    "best_for": "Log analysis, SIEM, security monitoring",
+    "pricing": "Free / Enterprise pricing",
+    "affiliate_slug": "splunk",
+    "pros": "Powerful search, real-time analysis, dashboards",
+    "cons": "Expensive, resource-intensive, complex setup",
+    "tags": ["security", "siem", "logs"]
+  },
+  {
+    "name": "Terraform",
+    "category": "DevOps",
+    "best_for": "Infrastructure as code, multi-cloud provisioning",
+    "pricing": "Free / Enterprise",
+    "affiliate_slug": "terraform",
+    "pros": "Declarative syntax, multi-cloud, state management",
+    "cons": "State file complexity, learning curve",
+    "tags": ["devops", "infrastructure", "automation"]
+  },
+  {
+    "name": "Ansible",
+    "category": "DevOps",
+    "best_for": "Configuration management, automation",
+    "pricing": "Free / Red Hat subscription",
+    "affiliate_slug": "ansible",
+    "pros": "Agentless, simple YAML syntax, large module library",
+    "cons": "Performance issues at scale, limited Windows support",
+    "tags": ["devops", "automation", "configuration"]
+  },
+  {
+    "name": "Datadog",
+    "category": "Monitoring",
+    "best_for": "Infrastructure monitoring, APM, logs",
+    "pricing": "$15/host/month",
+    "affiliate_slug": "datadog",
+    "pros": "Unified platform, AI-powered insights, integrations",
+    "cons": "Expensive, steep learning curve",
+    "tags": ["monitoring", "observability", "devops"]
+  },
+  {
+    "name": "Wireshark",
+    "category": "Security",
+    "best_for": "Packet analysis, network troubleshooting",
+    "pricing": "Free",
+    "affiliate_slug": "wireshark",
+    "pros": "Industry standard, powerful filters, detailed analysis",
+    "cons": "Overwhelming for beginners, requires expertise",
+    "tags": ["security", "networking", "analysis"]
+  },
+  {
+    "name": "Nmap",
+    "category": "Security",
+    "best_for": "Network scanning, port discovery",
+    "pricing": "Free",
+    "affiliate_slug": "nmap",
+    "pros": "Powerful, scriptable, widely supported",
+    "cons": "Can be detected by IDS, legal concerns",
+    "tags": ["security", "scanning", "networking"]
+  },
+  {
+    "name": "Burp Suite",
+    "category": "Security",
+    "best_for": "Web application security testing",
+    "pricing": "Free Community / $449/year Pro",
+    "affiliate_slug": "burp",
+    "pros": "Comprehensive toolkit, extensible, active community",
+    "cons": "Steep learning curve, expensive Pro version",
+    "tags": ["security", "pentesting", "web"]
+  },
+  {
+    "name": "Metasploit",
+    "category": "Security",
+    "best_for": "Penetration testing, exploit development",
+    "pricing": "Free Community / $15k/year Pro",
+    "affiliate_slug": "metasploit",
+    "pros": "Massive exploit database, automation, reporting",
+    "cons": "Resource-intensive, requires training",
+    "tags": ["security", "pentesting", "exploits"]
+  },
+  {
+    "name": "Kali Linux",
+    "category": "Security",
+    "best_for": "Penetration testing OS, security research",
+    "pricing": "Free",
+    "affiliate_slug": "kali",
+    "pros": "Pre-loaded tools, regular updates, extensive docs",
+    "cons": "Not for daily driver use, resource-heavy",
+    "tags": ["security", "linux", "pentesting"]
+  },
+  {
+    "name": "Shodan",
+    "category": "Security",
+    "best_for": "IoT device search, internet scanning",
+    "pricing": "Free / $59/month",
+    "affiliate_slug": "shodan",
+    "pros": "Unique dataset, API access, filters",
+    "cons": "Ethical concerns, subscription required",
+    "tags": ["security", "osint", "scanning"]
+  },
+  {
+    "name": "Tailscale",
+    "category": "Security",
+    "best_for": "Zero-trust networking, secure remote access",
+    "pricing": "Free / $6/user/month",
+    "affiliate_slug": "tailscale",
+    "pros": "Easy setup, WireGuard-based, cross-platform",
+    "cons": "Relies on central coordination server",
+    "tags": ["security", "vpn", "networking"]
+  },
+  {
+    "name": "Authy",
+    "category": "Security",
+    "best_for": "Two-factor authentication, backup codes",
+    "pricing": "Free",
+    "affiliate_slug": "authy",
+    "pros": "Multi-device sync, cloud backup, simple UI",
+    "cons": "Owned by Twilio, no export feature",
+    "tags": ["security", "2fa", "authentication"]
+  },
+  {
+    "name": "YubiKey",
+    "category": "Security",
+    "best_for": "Hardware 2FA, phishing-resistant authentication",
+    "pricing": "$25-$90",
+    "affiliate_slug": "yubikey",
+    "pros": "Physical security, FIDO2 support, durable",
+    "cons": "Can be lost, upfront cost",
+    "tags": ["security", "hardware", "2fa"]
+  },
+  {
+    "name": "Bitwarden",
+    "category": "Security",
+    "best_for": "Open-source password management",
+    "pricing": "Free / $10/year Premium",
+    "affiliate_slug": "bitwarden",
+    "pros": "Open-source, affordable, self-hosting option",
+    "cons": "UI less polished than competitors",
+    "tags": ["security", "password", "open-source"]
+  },
+  {
+    "name": "Plausible Analytics",
+    "category": "Analytics",
+    "best_for": "Privacy-focused web analytics",
+    "pricing": "$9/month Starter",
+    "affiliate_slug": "plausible",
+    "pros": "No cookies, GDPR compliant, lightweight script",
+    "cons": "Less detailed than Google Analytics",
+    "tags": ["analytics", "privacy", "web"]
+  },
+  {
+    "name": "n8n",
+    "category": "Automation",
+    "best_for": "Self-hosted workflow automation",
+    "pricing": "Free self-hosted / $20/month Cloud",
+    "affiliate_slug": "n8n",
+    "pros": "Open-source, self-hostable, visual workflow builder",
+    "cons": "Requires technical setup, smaller community",
+    "tags": ["automation", "open-source", "self-hosted"]
+  }
+]
