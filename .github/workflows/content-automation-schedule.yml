@@ -17,8 +17,8 @@ jobs:
       WP_URL: ${{ secrets.WP_URL }}
       WP_USER: ${{ secrets.WP_USER }}
       WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
-      # If your workers need more later (e.g., OPENAI_API_KEY, SHEETS creds),
-      # we'll add those here in the next step.
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      PYTHONPATH: ${{ github.workspace }}
 
     steps:
       - name: Checkout repository
