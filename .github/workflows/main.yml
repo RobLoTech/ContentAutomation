@@ -1,0 +1,26 @@
+name: content-automation-test
+
+on:
+  # Run once per day at 12:00 UTC (you can adjust later)
+  schedule:
+    - cron: "0 12 * * *"
+  # Allow manual runs from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  test-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Print Python version and files
+        run: |
+          python --version
+          ls -R
