@@ -1,0 +1,43 @@
+name: content-automation-schedule
+
+on:
+  # Daily at 12:00 UTC (~06:00 or 07:00 your time depending on DST)
+  schedule:
+    - cron: "0 12 * * *"
+    # Weekly metrics run: Sunday at 04:00 UTC (~Saturday night for you)
+    - cron: "0 4 * * 0"
+  # Allow manual runs for testing
+  workflow_dispatch:
+
+jobs:
+  run-automation:
+    runs-on: ubuntu-latest
+
+    env:
+      WP_URL: ${{ secrets.WP_URL }}
+      WP_USER: ${{ secrets.WP_USER }}
+      WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+      # If your workers need more later (e.g., OPENAI_API_KEY, SHEETS creds),
+      # we'll add those here in the next step.
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install flask feedparser beautifulsoup4 pandas schedule python-dotenv requests lxml gspread google-auth openai
+
+      - name: Run daily news summarizer and metrics logger
+        working-directory: ./workers
+        run: |
+          echo "Starting scheduled automation..."
+          # Daily news summarizer
+          python news_summarizer.py || echo "news_summarizer.py failed"
+          # Weekly metrics logger will still run even if summarizer fails
+          python metrics_logger.py || echo "metrics_logger.py failed"
