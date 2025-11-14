@@ -9,10 +9,12 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # Pull secrets into env for the script
       WP_URL: ${{ secrets.WP_URL }}
       WP_USER: ${{ secrets.WP_USER }}
       WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      PYTHONPATH: ${{ github.workspace }}
+
 
     steps:
       - name: Checkout repository
