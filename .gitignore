@@ -49,3 +49,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+
+# Extra project-specific ignores
+audit/
+replit.md
