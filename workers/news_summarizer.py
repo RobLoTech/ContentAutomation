@@ -201,15 +201,31 @@ Summary:"""
             try:
                 rows_to_append = []
                 for summary in summaries:
+                rows_to_append = []
+                for summary in summaries:
                     rows_to_append.append([
-                        summary['date'],
-                        summary['title'],
-                        summary['url'],
-                        summary['summary'],
-                        summary['source'],
-                        summary['source_url'],
-                        summary['category']
+                        # 1: date
+                        summary.get('date', ''),
+                        # 2: title
+                        summary.get('title', ''),
+                        # 3: url
+                        summary.get('url', ''),
+                        # 4: summary (we'll use the AI summary here)
+                        summary.get('summary', ''),
+                        # 5: source
+                        summary.get('source', ''),
+                        # 6: clean_summary (also AI summary for now)
+                        summary.get('summary', ''),
+                        # 7: image_url (leave blank for now)
+                        '',
+                        # 8: web_source_url (use source_url if present, else blank)
+                        summary.get('source_url', ''),
+                        # 9–12: NeedsCap, EndsWrong, TooShort, TooManySentences
+                        '', '', '', '',
+                        # 13: Category
+                        summary.get('category', ''),
                     ])
+
                 
                 self.google_sheet.append_rows(rows_to_append)
                 print(f"✅ Appended {len(rows_to_append)} summaries to Google Sheets")
