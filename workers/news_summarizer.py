@@ -181,7 +181,7 @@ Summary:"""
                 summary = self.summarize_with_ai(entry['title'], entry['summary'])
                 
                 all_summaries.append({
-                    'date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                    'date': entry.get('published') or datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                     'title': entry['title'],
                     'url': entry['url'],
                     'summary': summary,
