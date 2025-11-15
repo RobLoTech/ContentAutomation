@@ -1,0 +1,6 @@
+feedparser
+python-dotenv
+openai>=1.0.0
+gspread
+google-auth
+requests
