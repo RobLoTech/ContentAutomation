@@ -61,7 +61,21 @@ class NewsSummarizer:
             {'url': 'https://venturebeat.com/category/ai/feed/', 'name': 'VentureBeat AI', 'category': 'ai'},
             {'url': 'https://www.makeuseof.com/tag/automation/feed/', 'name': 'MakeUseOf Automation', 'category': 'automation'},
         ]
-    
+
+    def get_source_homepage(self, source_name):
+        """Return publisher homepage URL based on source name."""
+        mapping = {
+            "The Hacker News": "https://thehackernews.com",
+            "Bleeping Computer": "https://www.bleepingcomputer.com",
+            "Dark Reading": "https://www.darkreading.com",
+            "CSO Online": "https://www.csoonline.com",
+            "Security Affairs": "https://securityaffairs.com",
+            "Schneier on Security": "https://www.schneier.com",
+            "TechRadar": "https://www.techradar.com",
+            "VentureBeat AI": "https://venturebeat.com",
+            "MakeUseOf Automation": "https://www.makeuseof.com",
+        }
+        return mapping.get(source_name, "")
     
     def load_processed_cache(self):
         """Load cache of already processed article URLs from local cache AND Google Sheets"""
@@ -172,7 +186,7 @@ Summary:"""
                     'url': entry['url'],
                     'summary': summary,
                     'source': feed_config['name'],
-                    'source_url': feed_config['url'],
+                    'source_url': self.get_source_homepage(feed_config['name']),
                     'category': feed_config['category']
                 })
                 
