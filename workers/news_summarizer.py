@@ -131,28 +131,41 @@ class NewsSummarizer:
         # Fallback: return UTC now
         return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z")
 
-    def fetch_rss_entries(self, feed_url, max_entries=5):
-        """Fetch entries from RSS feed"""
+    def fetch_rss_entries(self, feed_url, max_new=5, max_depth=25):
+        """
+        Fetch feed entries and return up to `max_new` unseen articles.
+        Looks deeper into the feed (up to max_depth entries) to find unseen items.
+        """
         try:
             feed = feedparser.parse(feed_url)
-            entries = []
-            
-            for entry in feed.entries[:max_entries]:
+            entries = feed.entries[:max_depth]  # Look deep into recent posts
+            new_articles = []
+
+            for entry in entries:
                 url = entry.get('link', '')
+                if not url:
+                    continue
+
                 url_hash = self.generate_url_hash(url)
-                
+
+                # Skip if already processed
                 if url_hash in self.processed_urls:
                     continue
-                
-                entries.append({
+
+                new_articles.append({
                     'title': entry.get('title', 'Untitled'),
                     'url': url,
                     'url_hash': url_hash,
                     'published': entry.get('published', ''),
-                    'summary': entry.get('summary', '')[:500]
+                    'summary': entry.get('summary', '')[:1000]
                 })
-            
-            return entries
+
+                # Stop once we have enough new articles
+                if len(new_articles) >= max_new:
+                    break
+
+            return new_articles
+
         except Exception as e:
             print(f"Error fetching {feed_url}: {e}")
             return []
