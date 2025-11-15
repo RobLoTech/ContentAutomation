@@ -122,6 +122,42 @@ Return your answer as VALID JSON ONLY, no commentary, in this format:
 """
     return prompt
 
+def extract_json_block(raw: str) -> str:
+    """
+    Try to clean the OpenAI response so it's valid JSON:
+    - Remove ```json ... ``` fences if present
+    - Trim everything before the first '[' or '{'
+    """
+    if not raw:
+        return raw
+
+    text = raw.strip()
+
+    # Strip code fences like ```json ... ``` or ``` ...
+    if text.startswith("```"):
+        lines = text.splitlines()
+
+        # Remove the first line (``` or ```json)
+        lines = lines[1:]
+
+        # If last line is ``` remove it
+        if lines and lines[-1].strip().startswith("```"):
+            lines = lines[:-1]
+
+        text = "\n".join(lines).strip()
+
+    # Find the first JSON-looking character
+    first_idx = None
+    for ch in ["[", "{"]:
+        idx = text.find(ch)
+        if idx != -1:
+            if first_idx is None or idx < first_idx:
+                first_idx = idx
+
+    if first_idx is not None:
+        text = text[first_idx:].strip()
+
+    return text
 
 def generate_ideas_for_news(client, news_item):
     """Call OpenAI to generate ideas for a single news row and return a list of idea dicts."""
@@ -142,9 +178,11 @@ def generate_ideas_for_news(client, news_item):
         )
 
         raw = response.choices[0].message.content.strip()
+        cleaned = extract_json_block(raw)
 
         # Try to parse as JSON
-        ideas = json.loads(raw)
+        ideas = json.loads(cleaned)
+
         if not isinstance(ideas, list):
             print("⚠️ OpenAI response was not a list; skipping this item")
             return []
