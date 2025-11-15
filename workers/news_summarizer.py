@@ -201,8 +201,6 @@ Summary:"""
             try:
                 rows_to_append = []
                 for summary in summaries:
-                rows_to_append = []
-                for summary in summaries:
                     rows_to_append.append([
                         # 1: date
                         summary.get('date', ''),
