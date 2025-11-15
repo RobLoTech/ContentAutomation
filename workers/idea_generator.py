@@ -9,6 +9,54 @@ from openai import OpenAI
 
 load_dotenv()
 
+# Topics we care about most (mainstream / high-interest)
+INTEREST_KEYWORDS = [
+    "windows",
+    "microsoft",
+    "office 365",
+    "m365",
+    "exchange",
+    "azure",
+    "active directory",
+    "activedirectory",
+    "domain controller",
+    "powershell",
+    "vpn",
+    "cisco",
+    "anyconnect",
+    "firepower",
+    "okta",
+    "duo",
+    "single sign-on",
+    "sso",
+    "google workspace",
+    "workspace",
+    "macos",
+    "ios",
+    "iphone",
+    "android",
+    "chrome",
+    "browser",
+    "cloud",
+    "aws",
+    "amazon web services",
+    "gcp",
+    "google cloud",
+    "iam",
+    "identity",
+    "ransomware",
+    "data breach",
+    "zero-day",
+    "zeroday",
+    "phishing",
+    "business email compromise",
+    "bec",
+    "password manager",
+    "vpn service",
+    "email security",
+    "mfa",
+    "multi-factor",
+]
 
 def get_sheets_client():
     """Connect to Google Sheets using the same service account JSON."""
@@ -33,6 +81,27 @@ def get_sheets_client():
         print(f"⚠️ Failed to initialize Google Sheets client for idea generator: {e}")
         return None
 
+def matches_interest_keywords(news_item: dict) -> bool:
+    """
+    Return True if the news item looks broadly interesting / mainstream
+    based on simple keyword matching in title/summary/source/category.
+    """
+    text_parts = [
+        news_item.get("title", ""),
+        news_item.get("summary", ""),
+        news_item.get("clean_summary", ""),
+        news_item.get("source", ""),
+        news_item.get("Category", ""),
+        news_item.get("category", ""),
+    ]
+
+    haystack = " ".join([p for p in text_parts if p]).lower()
+
+    for kw in INTEREST_KEYWORDS:
+        if kw.lower() in haystack:
+            return True
+
+    return False
 
 def get_recent_news_rows(gc, max_rows=5):
     """
