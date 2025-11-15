@@ -107,7 +107,30 @@ class NewsSummarizer:
     def generate_url_hash(self, url):
         """Generate hash for URL deduplication"""
         return hashlib.md5(url.encode()).hexdigest()
-    
+
+    def normalize_date(self, published):
+        """Convert RSS date formats to ISO 8601: YYYY-MM-DDTHH:MM:SS.000Z"""
+        if not published:
+            return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
+        # Try multiple known RSS date formats
+        date_formats = [
+            "%a, %d %b %Y %H:%M:%S %Z",   # Mon, 10 Nov 2025 21:53:50 GMT
+            "%a, %d %b %Y %H:%M:%S %z",   # Mon, 10 Nov 2025 21:53:50 +0000
+            "%Y-%m-%dT%H:%M:%S%z",        # 2025-11-10T21:53:50+00:00
+            "%Y-%m-%dT%H:%M:%S.%fZ",      # 2025-11-10T21:53:50.000Z
+        ]
+
+        for fmt in date_formats:
+            try:
+                dt = datetime.strptime(published, fmt)
+                return dt.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+            except:
+                continue
+
+        # Fallback: return UTC now
+        return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
     def fetch_rss_entries(self, feed_url, max_entries=5):
         """Fetch entries from RSS feed"""
         try:
@@ -181,7 +204,7 @@ Summary:"""
                 summary = self.summarize_with_ai(entry['title'], entry['summary'])
                 
                 all_summaries.append({
-                    'date': entry.get('published') or datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                    'date': self.normalize_date(entry.get('published')),
                     'title': entry['title'],
                     'url': entry['url'],
                     'summary': summary,
