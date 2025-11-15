@@ -5,15 +5,10 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import json
 import hashlib
+import gspread
+from google.oauth2.service_account import Credentials
 
 load_dotenv()
-
-try:
-    import gspread
-    from google.oauth2.service_account import Credentials
-    GSPREAD_AVAILABLE = True
-except ImportError:
-    GSPREAD_AVAILABLE = False
 
 class NewsSummarizer:
     def __init__(self):
@@ -25,8 +20,33 @@ class NewsSummarizer:
         self.max_length = int(os.getenv('SUMMARY_MAX_LENGTH', 120))
         self.rss_feeds = self.load_feeds()
         self.cache_file = '../data/processed_articles.json'
+        self.google_sheet = None
+
+        # --- Google Sheets setup via service account ---
+        creds_json = os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON")
+        if not creds_json:
+            print("⚠️ GOOGLE_SERVICE_ACCOUNT_JSON not set; Sheets integration disabled")
+        else:
+            try:
+                creds_info = json.loads(creds_json)
+                creds = Credentials.from_service_account_info(
+                    creds_info,
+                    scopes=[
+                        "https://www.googleapis.com/auth/spreadsheets",
+                        "https://www.googleapis.com/auth/drive",
+                    ],
+                )
+                gc = gspread.authorize(creds)
+                # Use your actual sheet + tab names
+                sheet = gc.open("RobLoTech_Content_Ideas").worksheet("Inoreader Articles")
+                self.google_sheet = sheet
+                print("✅ Connected to Google Sheet: RobLoTech_Content_Ideas / Inoreader Articles")
+            except Exception as e:
+                print(f"⚠️ Failed to initialize Google Sheets client: {e}")
+                self.google_sheet = None
+
+        # Load processed URLs AFTER Google Sheets is set up
         self.processed_urls = self.load_processed_cache()
-        self.google_sheet = self.connect_to_google_sheet() if GSPREAD_AVAILABLE else None
     
     def load_feeds(self):
         """Load RSS feeds from config"""
@@ -42,19 +62,6 @@ class NewsSummarizer:
             {'url': 'https://www.makeuseof.com/tag/automation/feed/', 'name': 'MakeUseOf Automation', 'category': 'automation'},
         ]
     
-    def connect_to_google_sheet(self):
-        """Connect to Google Sheets via Replit connector"""
-        try:
-            sheet_id = os.getenv('GOOGLE_SHEET_ID')
-            if not sheet_id:
-                print("⚠️  GOOGLE_SHEET_ID not set, skipping Google Sheets integration")
-                return None
-            
-            gc = gspread.oauth()
-            return gc.open_by_key(sheet_id).worksheet('Inoreader Articles')
-        except Exception as e:
-            print(f"⚠️  Could not connect to Google Sheets: {e}")
-            return None
     
     def load_processed_cache(self):
         """Load cache of already processed article URLs from local cache AND Google Sheets"""
