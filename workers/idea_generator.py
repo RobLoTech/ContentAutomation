@@ -103,10 +103,13 @@ def matches_interest_keywords(news_item: dict) -> bool:
 
     return False
 
-def get_recent_news_rows(gc, max_rows=5):
+def get_recent_news_rows(gc, max_rows=5, scan_depth=30):
     """
-    Read the newest news rows from 'Inoreader Articles'.
-    Assumes sheet is already sorted with newest at the top (which your Apps Script handles).
+    Read the newest news rows from 'Inoreader Articles',
+    then filter to only those that match our interest keywords.
+
+    - scan_depth: how many newest rows to scan (e.g. 30)
+    - max_rows: maximum number of matching rows to return
     """
     try:
         sheet = gc.open("RobLoTech_Content_Ideas").worksheet("Inoreader Articles")
@@ -115,14 +118,27 @@ def get_recent_news_rows(gc, max_rows=5):
             print("⚠️ No news records found in Inoreader Articles")
             return []
 
-        # Take the first N rows = newest N
-        recent = records[:max_rows]
-        print(f"✅ Fetched {len(recent)} recent news rows for idea generation")
-        return recent
+        # Look at the newest `scan_depth` articles
+        recent_candidates = records[:scan_depth]
+
+        # Filter by our interest keywords
+        filtered = [row for row in recent_candidates if matches_interest_keywords(row)]
+
+        if not filtered:
+            print(f"⚠️ No recent articles matched interest keywords in the newest {scan_depth} rows")
+            return []
+
+        # Limit to max_rows
+        selected = filtered[:max_rows]
+        print(
+            f"✅ Fetched {len(selected)} high-interest news rows for idea generation "
+            f"(from {scan_depth} newest articles, {len(filtered)} matched keywords)"
+        )
+        return selected
+
     except Exception as e:
         print(f"⚠️ Error reading Inoreader Articles for idea generator: {e}")
         return []
-
 
 def get_backlog_sheet(gc):
     """Get the Content_Backlog worksheet."""
