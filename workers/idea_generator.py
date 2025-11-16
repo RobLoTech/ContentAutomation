@@ -164,7 +164,7 @@ def get_openai_client():
 
 def build_idea_prompt(news_item):
     """
-    Create a prompt for generating ideas from a single news article row.
+    Create a prompt for generating monetizable content ideas from a single news article row.
     Expects keys like: title, url, summary, source, category.
     """
     title = news_item.get("title", "")
@@ -174,9 +174,15 @@ def build_idea_prompt(news_item):
     category = news_item.get("Category") or news_item.get("category", "")
 
     prompt = f"""
-You are a senior content strategist and cybersecurity educator helping a solo creator plan monetizable content.
+You are a senior content strategist and cybersecurity educator helping a solo creator
+plan monetizable, realistic content.
 
-You are given a single news article with this context:
+CONTEXT ABOUT THE CREATOR
+- Solo security pro with a full-time job
+- Focus areas: cybersecurity, Microsoft 365, cloud, automation, AI tools, practical defense
+- Goal: attract a broad audience while staying practical and monetizable
+
+YOU ARE GIVEN ONE NEWS ARTICLE:
 
 - Title: {title}
 - URL: {url}
@@ -184,18 +190,47 @@ You are given a single news article with this context:
 - Topical category: {category}
 - Summary: {summary}
 
-Based on this, generate 3 high-quality content ideas that:
-- Fit a cybersecurity / AI tools / automation brand
-- Are realistic for a solo creator with a full-time job
-- Have clear potential for affiliate angles (e.g. VPN, password managers, cloud security tools, M365 security, automation platforms, AI tools)
-- Could be blog posts, newsletter issues, or tutorials
+TASK
 
-Return your answer as VALID JSON ONLY, no commentary, in this format:
+Based on this single article, generate 3 HIGH-QUALITY content ideas that:
+- Are realistic for a solo creator (can be created in 2–6 hours)
+- Have clear potential for affiliate angles (e.g. VPNs, password managers, cloud security tools,
+  M365 security, email security, EDR, backup, automation platforms, AI tools, training platforms)
+- Fit one of these content types (use EXACT strings):
+
+  - "tutorial"           (step-by-step how-to guides)
+  - "newsletter"         (email newsletter issues or sections)
+  - "tool_review"        (review/comparison of tools or services)
+  - "automation_workflow" (workflow, script, or playbook using tools like Make.com, GitHub Actions, PowerShell, etc.)
+  - "cheat_sheet"        (downloadable or on-page reference)
+  - "linkedin_post"      (LinkedIn post or carousel idea)
+
+- Are understandable to:
+  - IT admins and security pros
+  - BUT also ambitious non-experts who care about protecting their business and data
+
+For each idea, you MUST include:
+- A strong, specific title
+- The idea_type from the list above (exact string)
+- A clear "angle" that explains the hook or perspective
+- A specific "target_audience" (e.g. "small business IT admins", "solo consultants", "non-technical small business owners")
+- A difficulty level: "easy", "medium", or "advanced" (based on effort + technical depth)
+- A short "affiliate_potential" note:
+  - Name categories or concrete tools that could be mentioned (e.g. "VPNs + password managers", "email security gateways + backup tools", "M365 security add-ons", "EDR vendors", "automation platforms like Make.com/Zapier")
+- "notes" should briefly say:
+  - Whether the idea is "evergreen" or "news-driven"
+  - How it might fit into a funnel (e.g. "top-of-funnel awareness", "affiliate-focused comparison", "lead magnet with email opt-in")
+
+VERY IMPORTANT:
+- Ideas must be *tied* to the original news article (e.g. lessons, how-to, breakdowns, or defensive takeaways)
+- They should not just restate the news; they should be reusable content assets.
+
+Return your answer as VALID JSON ONLY, no commentary or markdown, in this exact format:
 
 [
   {{
     "idea_title": "...",
-    "idea_type": "blog_post | newsletter | tutorial | video_script",
+    "idea_type": "tutorial | newsletter | tool_review | automation_workflow | cheat_sheet | linkedin_post",
     "angle": "...",
     "target_audience": "...",
     "difficulty": "easy | medium | advanced",
@@ -206,6 +241,7 @@ Return your answer as VALID JSON ONLY, no commentary, in this format:
 ]
 """
     return prompt
+
 
 def extract_json_block(raw: str) -> str:
     """
