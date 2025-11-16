@@ -150,7 +150,6 @@ def get_backlog_sheet(gc):
         print(f"⚠️ Error opening Content_Backlog sheet: {e}")
         return None
 
-
 def get_openai_client():
     api_key = os.getenv("OPENAI_API_KEY")
     base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
@@ -296,6 +295,27 @@ def generate_ideas_for_news(client, news_item):
         print(f"⚠️ Error generating ideas from OpenAI: {e}")
         return []
 
+def get_existing_titles(backlog_sheet):
+    """
+    Load existing idea titles from Content_Backlog so we don't create duplicates.
+    Titles are normalized to lowercase for comparison.
+    """
+    try:
+        records = backlog_sheet.get_all_records()
+        titles = set()
+
+        for row in records:
+            title = row.get("idea_title")
+            if title:
+                norm = title.strip().lower()
+                if norm:
+                    titles.add(norm)
+
+        print(f"✅ Loaded {len(titles)} existing idea titles from Content_Backlog")
+        return titles
+    except Exception as e:
+        print(f"⚠️ Error reading existing ideas from Content_Backlog: {e}")
+        return set()
 
 def append_ideas_to_backlog(backlog_sheet, news_item, ideas):
     """Append generated ideas into Content_Backlog."""
