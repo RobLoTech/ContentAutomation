@@ -317,22 +317,42 @@ def get_existing_titles(backlog_sheet):
         print(f"⚠️ Error reading existing ideas from Content_Backlog: {e}")
         return set()
 
-def append_ideas_to_backlog(backlog_sheet, news_item, ideas):
-    """Append generated ideas into Content_Backlog."""
+def append_ideas_to_backlog(backlog_sheet, news_item, ideas, existing_titles=None):
+    """Append generated ideas into Content_Backlog, skipping duplicate titles."""
     if not ideas:
         return 0
+
+    if existing_titles is None:
+        existing_titles = set()
 
     rows = []
     now_iso = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z")
     source_title = news_item.get("title", "")
     source_url = news_item.get("url", "")
 
+    skipped = 0
+
     for idea in ideas:
+        raw_title = idea.get("idea_title", "")
+        norm_title = raw_title.strip().lower() if raw_title else ""
+
+        # Skip ideas with no usable title
+        if not norm_title:
+            continue
+
+        # Skip duplicates
+        if norm_title in existing_titles:
+            skipped += 1
+            continue
+
+        # Record this title so we don't reuse it later in the same run
+        existing_titles.add(norm_title)
+
         rows.append([
             now_iso,                               # date
             source_title,                          # source_title
             source_url,                            # source_url
-            idea.get("idea_title", ""),            # idea_title
+            raw_title,                             # idea_title
             idea.get("idea_type", ""),             # idea_type
             idea.get("angle", ""),                 # angle
             idea.get("target_audience", ""),       # target_audience
@@ -342,14 +362,17 @@ def append_ideas_to_backlog(backlog_sheet, news_item, ideas):
             "new",                                 # status
         ])
 
+    if not rows:
+        print("⚠️ No non-duplicate ideas to append for this news item")
+        return 0
+
     try:
         backlog_sheet.append_rows(rows)
-        print(f"✅ Appended {len(rows)} ideas to Content_Backlog")
+        print(f"✅ Appended {len(rows)} ideas to Content_Backlog (skipped {skipped} duplicates)")
         return len(rows)
     except Exception as e:
         print(f"⚠️ Error appending ideas to Content_Backlog: {e}")
         return 0
-
 
 def run_idea_generator(max_news_rows=5):
     """Main entry point to generate ideas from recent news."""
@@ -373,11 +396,14 @@ def run_idea_generator(max_news_rows=5):
     if not backlog_sheet:
         return
 
+    # Load existing titles once per run for de-duplication
+    existing_titles = get_existing_titles(backlog_sheet)
+
     total_ideas = 0
 
     for news_item in news_rows:
         ideas = generate_ideas_for_news(client, news_item)
-        total_ideas += append_ideas_to_backlog(backlog_sheet, news_item, ideas)
+        total_ideas += append_ideas_to_backlog(backlog_sheet, news_item, ideas, existing_titles)
 
     print("\n📊 Idea generation complete")
     print(f"   News rows processed: {len(news_rows)}")
