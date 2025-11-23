@@ -161,7 +161,8 @@ def trend_score_for_item(news_item: dict, keyword_counts: dict) -> int:
 def get_recent_news_rows(gc, max_rows=5, scan_depth=30):
     """
     Read the newest news rows from 'Inoreader Articles',
-    then filter to only those that match our interest keywords.
+    then filter to only those that match our interest keywords,
+    and rank them by a simple trend_score based on keyword frequencies.
 
     - scan_depth: how many newest rows to scan (e.g. 30)
     - max_rows: maximum number of matching rows to return
@@ -176,19 +177,45 @@ def get_recent_news_rows(gc, max_rows=5, scan_depth=30):
         # Look at the newest `scan_depth` articles
         recent_candidates = records[:scan_depth]
 
-        # Filter by our interest keywords
-        filtered = [row for row in recent_candidates if matches_interest_keywords(row)]
+        # Compute how often each interest keyword appears in these recent articles
+        keyword_counts = compute_keyword_counts(recent_candidates)
 
-        if not filtered:
-            print(f"⚠️ No recent articles matched interest keywords in the newest {scan_depth} rows")
+        # Filter by our interest keywords and compute a trend_score for each
+        filtered_with_scores = []
+        for row in recent_candidates:
+            if not matches_interest_keywords(row):
+                continue
+
+            score = trend_score_for_item(row, keyword_counts)
+            # Attach score so we can sort; we don't write this back to Sheets
+            row["_trend_score"] = score
+            filtered_with_scores.append(row)
+
+        if not filtered_with_scores:
+            print(
+                f"⚠️ No recent articles matched interest keywords in the newest {scan_depth} rows"
+            )
             return []
 
-        # Limit to max_rows
-        selected = filtered[:max_rows]
-        print(
-            f"✅ Fetched {len(selected)} high-interest news rows for idea generation "
-            f"(from {scan_depth} newest articles, {len(filtered)} matched keywords)"
+        # Sort by trend_score (high → low)
+        filtered_with_scores.sort(
+            key=lambda r: r.get("_trend_score", 0), reverse=True
         )
+
+        # Limit to max_rows
+        selected = filtered_with_scores[:max_rows]
+
+        # For logging, capture some basic stats
+        top_scores = [item.get("_trend_score", 0) for item in selected]
+        max_score = max(top_scores) if top_scores else 0
+        min_score = min(top_scores) if top_scores else 0
+
+        print(
+            f"✅ Fetched {len(selected)} high-interest, trend-weighted news rows for idea generation "
+            f"(from {scan_depth} newest articles, {len(filtered_with_scores)} matched keywords; "
+            f"trend_score range in selection: {min_score}–{max_score})"
+        )
+
         return selected
 
     except Exception as e:
