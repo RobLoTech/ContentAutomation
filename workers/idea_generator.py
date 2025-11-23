@@ -103,6 +103,61 @@ def matches_interest_keywords(news_item: dict) -> bool:
 
     return False
 
+def compute_keyword_counts(records):
+    """
+    For a list of news records, count how many times each interest keyword appears
+    across the newest articles. This gives us a simple 'trend strength' measure.
+    """
+    counts = {kw.lower(): 0 for kw in INTEREST_KEYWORDS}
+
+    for row in records:
+        text_parts = [
+            row.get("title", ""),
+            row.get("summary", ""),
+            row.get("clean_summary", ""),
+            row.get("source", ""),
+            row.get("Category", ""),
+            row.get("category", ""),
+        ]
+        haystack = " ".join([p for p in text_parts if p]).lower()
+
+        for kw in INTEREST_KEYWORDS:
+            key = kw.lower()
+            if key in haystack:
+                counts[key] += 1
+
+    return counts
+
+
+def trend_score_for_item(news_item: dict, keyword_counts: dict) -> int:
+    """
+    Compute a simple trend score for a single news item:
+    - For every interest keyword that appears in this item,
+      look up how often that keyword appears across the recent articles.
+    - The score is the max of those frequencies.
+      (e.g. if 'microsoft' appears in 5 recent items and 'ransomware' in 3,
+       the trend_score is 5.)
+    """
+    text_parts = [
+        news_item.get("title", ""),
+        news_item.get("summary", ""),
+        news_item.get("clean_summary", ""),
+        news_item.get("source", ""),
+        news_item.get("Category", ""),
+        news_item.get("category", ""),
+    ]
+    haystack = " ".join([p for p in text_parts if p]).lower()
+
+    score = 0
+    for kw in INTEREST_KEYWORDS:
+        key = kw.lower()
+        if key in haystack:
+            freq = keyword_counts.get(key, 0)
+            if freq > score:
+                score = freq
+
+    return score
+
 def get_recent_news_rows(gc, max_rows=5, scan_depth=30):
     """
     Read the newest news rows from 'Inoreader Articles',
