@@ -442,6 +442,7 @@ def append_ideas_to_backlog(backlog_sheet, news_item, ideas, existing_titles=Non
             idea.get("affiliate_potential", ""),   # affiliate_potential
             idea.get("notes", ""),                 # notes
             "new",                                 # status
+            news_item.get("_trend_score", 0)       # strend_score
         ])
 
     if not rows:
